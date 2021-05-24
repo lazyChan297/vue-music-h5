@@ -158,7 +158,7 @@ module.exports = {
   productionSourceMap: false,
   configureWebpack: config => {
     config.externals = externals
-    config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
+    // config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true
       config.plugins.push(
         new compressionWebpackConfig({
           filename: '[path][base].gz',
@@ -202,6 +202,14 @@ module.exports = {
       args[0].title = '297Music'
       return args
     })
+    config.module
+      .rule('images')
+      .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
+      .use('url-loader')
+      .options({
+        limit: 10000
+      })
+      .end()
     config
       .optimization.splitChunks({
         chunks: 'all',

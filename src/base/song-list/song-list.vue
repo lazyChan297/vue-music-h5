@@ -70,7 +70,7 @@
         .icon
           display: inline-block
           width: 25px
-          height: 224px
+          height: 24px
           background-size: 25px 24px
           &.icon0
             bg-image('first')
